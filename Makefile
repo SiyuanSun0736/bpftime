@@ -65,9 +65,9 @@ build-wo-libbpf: ## build the package with iouring extension
 
 release: ## build the release version
 	cmake -Bbuild  -DCMAKE_BUILD_TYPE:STRING=RelWithDebInfo \
-				   -DBUILD_BPFTIME_DAEMON=1
+				   -DBUILD_BPFTIME_DAEMON=1 \
+				   -DENABLE_LLVM_SHARED=ON
 	cmake --build build --config RelWithDebInfo --target install  -j$(JOBS)
-
 release-with-llvm-jit: ## build the package, with llvm-jit
 	cmake -Bbuild  -DCMAKE_BUILD_TYPE:STRING=RelWithDebInfo \
 				   -DBPFTIME_LLVM_JIT=1 \
